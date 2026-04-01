@@ -199,9 +199,51 @@ p {
   gap: 34px;
 }
 
+.hero-stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  min-height: 560px;
+  padding: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 22px 60px rgba(33, 17, 15, 0.16);
+  background: #271716;
+}
+
+.hero-video,
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-video-overlay {
+  background:
+    linear-gradient(90deg, rgba(22, 12, 10, 0.82) 0%, rgba(22, 12, 10, 0.68) 42%, rgba(22, 12, 10, 0.45) 100%),
+    linear-gradient(180deg, rgba(153, 0, 0, 0.16), rgba(18, 10, 8, 0.08));
+}
+
 .hero-copy {
+  position: relative;
+  z-index: 1;
   min-width: 0;
   max-width: 100%;
+}
+
+.hero-copy .eyebrow,
+.hero-copy h1,
+.hero-copy p {
+  color: #fff7ef;
+}
+
+.hero-copy .eyebrow {
+  color: #f4d7b4;
 }
 
 .hero-copy h1 {
@@ -247,10 +289,11 @@ p {
   box-shadow: 0 14px 30px rgba(170, 138, 90, 0.22);
 }
 
-.button-secondary {
-  border-color: rgba(34, 49, 61, 0.14);
-  background: rgba(255, 255, 255, 0.75);
-  color: var(--text);
+.hero-actions .button-secondary {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fffaf4;
+  backdrop-filter: blur(8px);
 }
 
 .button-tertiary {
@@ -284,6 +327,7 @@ p {
   padding: 20px;
   border-radius: var(--radius-md);
   backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .hero-metrics article img {
@@ -584,6 +628,11 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .hero-stage {
+    min-height: 520px;
+    padding: 40px 34px;
+  }
+
   .hero-band img {
     min-height: 240px;
   }
@@ -634,6 +683,17 @@ p {
     padding-top: 42px;
   }
 
+  .hero-stage {
+    min-height: 500px;
+    padding: 32px 24px;
+  }
+
+  .hero-video-overlay {
+    background:
+      linear-gradient(180deg, rgba(22, 12, 10, 0.72) 0%, rgba(22, 12, 10, 0.6) 46%, rgba(22, 12, 10, 0.76) 100%),
+      linear-gradient(180deg, rgba(153, 0, 0, 0.14), rgba(18, 10, 8, 0.06));
+  }
+
   .hero-metrics,
   .practice-grid,
   .contact-grid {
@@ -665,6 +725,11 @@ p {
     line-height: 1.08;
   }
 
+  .hero-stage {
+    min-height: 460px;
+    padding: 28px 20px;
+  }
+
   h2 {
     font-size: clamp(2rem, 11vw, 3rem);
   }
@@ -688,5 +753,17 @@ p {
     right: 14px;
     bottom: 14px;
     padding: 12px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
+
+  .hero-video-overlay {
+    background:
+      linear-gradient(135deg, rgba(37, 23, 22, 0.94), rgba(88, 33, 28, 0.86)),
+      url("https://yata-apix-18c37348-f717-4cd3-b16f-2c6c56a8abc3.s3-object.locaweb.com.br/b54d986261114302998fa78ad85193c6.jpg") center/cover;
   }
 }
