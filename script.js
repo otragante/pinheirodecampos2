@@ -2,6 +2,8 @@ const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector(".site-nav");
 const navLinks = document.querySelectorAll(".site-nav a");
 const revealItems = document.querySelectorAll(".reveal");
+const heroVideo = document.querySelector(".hero-video");
+const heroSection = document.querySelector(".hero-section");
 
 if (menuToggle && siteNav) {
   menuToggle.addEventListener("click", () => {
@@ -32,4 +34,20 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => observer.observe(item));
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
+}
+
+if (heroVideo && heroSection && "IntersectionObserver" in window) {
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        heroVideo.play().catch(() => {});
+      } else {
+        heroVideo.pause();
+      }
+    });
+  }, {
+    threshold: 0.2,
+  });
+
+  videoObserver.observe(heroSection);
 }
